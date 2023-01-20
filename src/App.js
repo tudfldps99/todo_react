@@ -1,9 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import FoodList from './components/FoodList';
+import Greeting from './components/Greeting';
 
 function App() {
   return (
-    <h1>안녕</h1>
+    <>    
+      <Greeting />
+      <FoodList />
+    </>
   );
 }
 
