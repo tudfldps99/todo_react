@@ -39,6 +39,19 @@ const TodoTemplate = () => {
         });
     };
 
+    // 할일 수정 요청 처리 (PUT, PATCH)
+    const updateTodo = ( todo ) => {
+        fetch(`${API_BASE_URL}/${todo.id}`, {
+            method: 'PUT' || 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(todo)
+        })
+        .then(res => res.json())
+        .then(result => {
+            setTodos(result.todos);
+        });
+    }
+
     // 렌더링 되자마자 할 일 => todos api GET 목록 호출
     useEffect(() => {
         fetch(API_BASE_URL)
@@ -51,7 +64,7 @@ const TodoTemplate = () => {
     return (
         <div className='todo-template'>
             <TodoHeader todoList={todos} />     {/* '할 일 x개 남음' 을 위해 TodoHeader에서도 todos 데이터 필요 */}
-            <TodoMain todoList={todos} remove={deleteTodo}/>    {/* 자식에서 부모에게 입력값을 콜백함수로 넘기기 위해 자식에게 deleteTodo 함수 보냄 */}
+            <TodoMain todoList={todos} remove={deleteTodo} update={updateTodo} />    {/* 자식에서 부모에게 입력값을 콜백함수로 넘기기 위해 자식에게 deleteTodo 함수 보냄 */}
             <TodoInput add={addTodo}/>      {/* 자식에서 부모에게 입력값을 콜백함수로 넘기기 위해 자식에게 addTodo 함수 보냄 */}
         </div>
     )

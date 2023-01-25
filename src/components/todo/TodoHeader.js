@@ -8,6 +8,7 @@ const TodoHeader = ({ todoList }) => {
     // todoList에서 done값이 flase인 객체들만 필터링
     const unDoneTodos = todoList.filter(todo => !todo.done);
 
+    // 할일 1. 현재 날짜로 바꿔보기
     return (
         <header>
             <h1>2023년 1월 25일</h1>
