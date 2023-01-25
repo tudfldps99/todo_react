@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { MdDone, MdDelete } from 'react-icons/md';
+import cn from 'classnames';
 
 import './css/TodoItem.css';
 
@@ -12,10 +13,12 @@ const TodoItem = ({ todo }) => {
     
     return (
         <li className='todo-item'>
-            <div className='check-circle'>
+             <div className={cn('check-circle', {active: done})}>       {/* done 값이 true면 active 클래스가 뒤에 붙음 */}
                 {done && <MdDone />}
             </div>
-            <span className='text'>{title}</span>
+            <span className={ cn('text', {finish: done}) }>     {/* done 값이 true면 finish 클래스가 뒤에 붙음 */}
+                {title}
+            </span>     
             <div className='remove'>
                 <MdDelete />
             </div>

@@ -26,11 +26,21 @@
     cursor: pointer;
 }
 
+.todo-item .check-circle.active {
+    border: 1px solid #38d9a9;
+    color: #38d9a9;
+}
+
 .todo-item .text {
     font-size: 21px;
     color: #495057;
 
     flex: 1;        /* 비율 (check-circle, text, remove가 1:8:1 인데, 8부분을 1로 하면 나머지는 알아서 비율 조정)*/
+}
+
+.todo-item .text.finish {
+    color: #919396;
+    text-decoration: line-through;      /* 글자 취소선 */
 }
 
 .todo-item .remove {
