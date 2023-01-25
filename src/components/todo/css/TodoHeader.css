@@ -1,0 +1,25 @@
+/* 2023-01-25 */
+
+header {
+    border-bottom: 1px solid #bbb;
+    padding: 48px 32px 24px 32px;   /* top right bottom left */
+}
+
+header h1 {     /* 조상 명시하여 태그의 우선순위 점수를 높임 */
+    font-size: 36px;
+    font-weight: 700;   /* bold */
+    color: #343a40;
+}
+
+header .day {       /* className 은 우선순위가 10점이라 굳이 조상을 명시할 필요는 없음 */
+    font-size: 21px;
+    color: #868e96;
+    margin-top: 12px;
+    margin-bottom: 40px;
+}
+
+header .tasks-left {
+    font-size: 18px;
+    font-weight: bold;
+    color: #20c997;
+}

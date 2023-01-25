@@ -11,5 +11,12 @@
     box-shadow: 0 0 8px #aaa;
 
     /* 박스 x축 중앙 정렬 : margin 좌우값을 auto로 설정*/
-    margin: 100px auto;    
+    margin: 100px auto;  
+    
+    /* 부모에게 기준을 잡아야 TodoInput 의 input 이 부모기준 맨 아래로 감 */
+    position: relative;
+
+    /* 자식(TodoMain.css)에 flex 사용했기에 부모에 display속성 필요 */
+    display: flex;
+    flex-direction: column;
 }

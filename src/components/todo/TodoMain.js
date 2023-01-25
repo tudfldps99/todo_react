@@ -1,9 +1,19 @@
-import React from 'react'
+// 2023-01-25
+import React from 'react';
 
-const TodoMain = () => {
-  return (
-    <div>TodoMain</div>
-  )
-}
+import TodoItem from './TodoItem';
 
-export default TodoMain
+import './css/TodoMain.css';
+
+const TodoMain = ({ todoList }) => {
+
+    return (
+        <ul className='todo-list'>
+            {
+                todoList.map(todo => <TodoItem key={todo.id} todo={todo} />)
+            }
+        </ul>    
+    );
+};
+
+export default TodoMain;

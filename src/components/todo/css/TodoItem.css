@@ -1,0 +1,55 @@
+/* 2023-01-25 */
+
+.todo-item {
+    display: flex;      /* 수평배치 */
+    padding: 12px 0;
+
+    /* 교차 축 중앙정렬 */
+    align-items: center;
+}
+
+.todo-item .check-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    border: 1px solid #9da1a7;
+
+    /* 원 만들기 */
+    border-radius: 50%;
+
+    /* 텍스트 정중앙 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.todo-item .text {
+    font-size: 21px;
+    color: #495057;
+
+    flex: 1;        /* 비율 (check-circle, text, remove가 1:8:1 인데, 8부분을 1로 하면 나머지는 알아서 비율 조정)*/
+}
+
+.todo-item .remove {
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+
+    /* 텍스트 정중앙 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    display: none;      
+}
+
+.todo-item:hover .remove {      /* 처음엔 안보였다가 li태그에 마우스 올렸을 때 보여도록 (휴지통 자체에 none을 걸었기에 li태그에 마우스를 올려야 함) */
+    display: block;
+}
+
+.todo-item .remove:hover {      /* 휴지통에 마우스 올리면 색상 변경 */
+    color: #f51b4f;
+}
