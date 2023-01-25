@@ -8,7 +8,6 @@ import TodoMain from './TodoMain'
 // css 로딩
 import './css/TodoTemplate.css'
 
-
 const TodoTemplate = () => {
 
     // 할일 api 데이터 
@@ -37,7 +36,7 @@ const TodoTemplate = () => {
 
     return (
         <div className='todo-template'>
-            <TodoHeader />
+            <TodoHeader todoList={todos} />     {/* '할 일 x개 남음' 을 위해 TodoHeader에서도 todos 데이터 필요 */}
             <TodoMain todoList={todos} />
             <TodoInput />
         </div>
