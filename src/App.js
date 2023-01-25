@@ -5,9 +5,11 @@ import Hello from './components/Hello';
 function App() {
   return (
     <>    
-      {/* <Greeting />
-      <FoodList /> */}
-      <Hello />
+      {/* 
+        <Greeting />
+        <FoodList />
+      */}
+      <Hello /> 
     </>
   );
 }

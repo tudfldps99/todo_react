@@ -1,3 +1,4 @@
+// 2023-01-20
 import React from 'react'
 
 // props : 부모 컴포넌트가 보내준 데이터가 담긴 객체
