@@ -1,6 +1,7 @@
 // import FoodList from './components/FoodList';
 // import Greeting from './components/Greeting';
-import Hello from './components/Hello';
+// import Hello from './components/Hello';
+import ItemMain from './components/item/ItemMain';
 
 function App() {
   return (
@@ -8,8 +9,10 @@ function App() {
       {/* 
         <Greeting />
         <FoodList />
+        <Hello />
       */}
-      <Hello /> 
+      
+      <ItemMain /> 
     </>
   );
 }
