@@ -82,7 +82,7 @@ const TodoTemplate = () => {
                 // 로딩 완료 처리
                 setLoading(false);
             });
-    }, []);
+    }, [API_BASE_URL]);
 
     // 로딩 중일 때 보여줄 태그
     const loadingPage = (

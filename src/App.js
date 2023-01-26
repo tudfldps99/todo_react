@@ -6,7 +6,7 @@
 */
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import TodoTemplate from './components/todo/TodoTemplate';
+// import TodoTemplate from './components/todo/TodoTemplate';
 
 // reactstrap(bootstrap)
 import 'bootstrap/dist/css/bootstrap.min.css';
