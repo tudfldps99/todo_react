@@ -21,4 +21,15 @@ $ npm start
 5. 추가 라이브러리
 ```
 $ npm install react-icons classnames
+
+$ npm install reactstrap bootstrapp
+$ npm install @mui/material @emotion/react @emotion/styled
+$ npm install @mui/icons-material
+$ npm install react-router-dom
 ```
+
+6. Git에서 React 파일 다운 시
+```
+$ npm install
+```
+입력 시 node_modules 설치됨
