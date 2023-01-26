@@ -1,12 +1,14 @@
 // 2023-01-25
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import TodoHeader from './TodoHeader'
-import TodoInput from './TodoInput'
-import TodoMain from './TodoMain'
+import TodoHeader from './TodoHeader';
+import TodoInput from './TodoInput';
+import TodoMain from './TodoMain';
+
+import { Spinner } from 'reactstrap';
 
 // css 로딩
-import './css/TodoTemplate.css'
+import './css/TodoTemplate.css';
 
 const TodoTemplate = () => {
 
@@ -14,6 +16,9 @@ const TodoTemplate = () => {
 
     // 할일 api 데이터 
     const [todos, setTodos] = useState([]);
+
+    // 로딩 중 상태
+    const [loading, setLoading] = useState(true);
 
     // 할일 등록 서버 요청  (POST에 대한 응답처리)
     const addTodo = ( todo ) => {
@@ -55,18 +60,48 @@ const TodoTemplate = () => {
     // 렌더링 되자마자 할 일 => todos api GET 목록 호출
     useEffect(() => {
         fetch(API_BASE_URL)
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403) {
+                    alert('로그인이 필요한 서비스입니다');
+                    // 리다이렉트 (로그인 페이지로)
+                    return;
+                } 
+                else if (res.status === 500) {
+                    alert('서버가 불안정합니다');
+                    return;
+                }
+                return res.json();
+            })
             .then(result => {
                 setTodos(result.todos);
+
+                // 로딩 완료 처리
+                setLoading(false);
             });
     }, []);
 
-    return (
+    // 로딩 중일 때 보여줄 태그
+    const loadingPage = (
+        <div className="loading">
+            <Spinner color="danger" >
+                Loading...
+            </Spinner>
+        </div>
+    );
+
+    // 로딩 완료 시 보여줄 태그
+    const viewPage = (
         <div className='todo-template'>
             <TodoHeader todoList={todos} />     {/* '할 일 x개 남음' 을 위해 TodoHeader에서도 todos 데이터 필요 */}
             <TodoMain todoList={todos} remove={deleteTodo} update={updateTodo} />    {/* 자식에서 부모에게 입력값을 콜백함수로 넘기기 위해 자식에게 deleteTodo 함수 보냄 */}
             <TodoInput add={addTodo}/>      {/* 자식에서 부모에게 입력값을 콜백함수로 넘기기 위해 자식에게 addTodo 함수 보냄 */}
         </div>
+    );
+
+    return (
+        <>
+            { loading ? loadingPage : viewPage}
+        </>
     )
 }
 
