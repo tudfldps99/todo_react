@@ -13,6 +13,7 @@ const Join = () => {
     const [message, setMessage] = useState({
         username: '',
         password: '',
+        repassword: '',
         email: ''
     });
 
@@ -20,6 +21,7 @@ const Join = () => {
     const [validate, setValidate] = useState({
         username: false,
         password: false,
+        repassword: false,
         email: false
     });
 
@@ -167,6 +169,38 @@ const Join = () => {
             password: e.target.value
         })
     };
+    
+    // 비밀번호 재입력
+    const rePasswordHandler = e => {
+
+        // 검증 시작
+        let msg;
+        
+        if (!e.target.value) {      // 패스워드 미입력
+            msg = '비밀번호는 필수 값입니다.';
+            setValidate({
+                ...validate,
+                repassword: false
+            });
+        } else if (e.target.value !== userValue.password) {
+            msg = '비밀번호가 다릅니다.';
+            setValidate({
+                ...validate,
+                repassword: false
+            })
+        } else {
+            msg = '비밀번호가 동일합니다.';
+            setValidate({
+                ...validate,
+                repassword: true
+            })
+        }
+
+        setMessage({
+            ...message,
+            repassword: msg
+        });
+    }
 
     // validate객체 안의 모든 논리값이 true인지 검사하는 함수
     const isValid = () => {
@@ -203,7 +237,7 @@ const Join = () => {
                 }
             });
         } else {
-            alert('입력창 다시 확인');
+            alert('입력창 재확인 필요');
         }
     };
 
@@ -280,6 +314,28 @@ const Join = () => {
                             : {color: 'red'}
                         }>
                             {message.password}
+                        </span>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            name="password"
+                            label="패스워드 재입력"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+
+                            onChange={rePasswordHandler}
+                        />
+                        <span style={
+                            validate.repassword
+                            ? {color: 'green'}
+                            : {color: 'red'}
+                        }>
+                            {message.repassword}
                         </span>
                     </Grid>
 
