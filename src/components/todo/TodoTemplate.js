@@ -7,12 +7,16 @@ import TodoMain from './TodoMain';
 
 import { Spinner } from 'reactstrap';
 
+import { BASE_URL, TODO } from '../../config/host-config';
+
 // css 로딩
 import './css/TodoTemplate.css';
 
 const TodoTemplate = () => {
 
-    const API_BASE_URL = 'http://localhost:8080/api/todos';
+    //const API_BASE_URL = 'http://localhost:8080/api/todos';
+    // -> 2023-01-26) host-config.js 
+    const API_BASE_URL = BASE_URL + TODO;
 
     // 할일 api 데이터 
     const [todos, setTodos] = useState([]);

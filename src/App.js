@@ -10,6 +10,7 @@ import TodoTemplate from './components/todo/TodoTemplate';
 
 // reactstrap(bootstrap)
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Join from './components/user/Join';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <ItemMain /> 
       */}
       <Header />
-      <TodoTemplate />
+      {/* <TodoTemplate /> */}
+      <Join />
       <Footer />
     </>
   );
