@@ -133,6 +133,14 @@ const Join = () => {
     // 비밀번호 입력란 검증 체인지 이벤트 핸들러
     const passwordHandler = e => {
 
+        // 패스워드 재입력란 비우기 (2023-01-27)
+        document.getElementById('password-check').value= '';
+        document.getElementById('check-text').textContent='';
+        setValidate({
+            ...validate,
+            repassword: false
+        })
+
         // 검증 시작
         let msg;
         const pwRegex =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
@@ -231,7 +239,8 @@ const Join = () => {
                 if (res.status === 200) {
                     alert('회원가입을 축하합니다.');
 
-                    // 로그인페이지로 리다이렉트
+                    // 로그인페이지로 리다이렉트 - 2023-01-27
+                    window.location.href = '/login';
                 } else {
                     alert('회원가입에 실패했습니다. 잠시 후 다시 시도하세요');
                 }
@@ -322,15 +331,15 @@ const Join = () => {
                             variant="outlined"
                             required
                             fullWidth
-                            name="password"
+                            name="password-check"
                             label="패스워드 재입력"
                             type="password"
-                            id="password"
+                            id="password-check"
                             autoComplete="current-password"
 
                             onChange={rePasswordHandler}
                         />
-                        <span style={
+                        <span id='check-text' style={
                             validate.repassword
                             ? {color: 'green'}
                             : {color: 'red'}

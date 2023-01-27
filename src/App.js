@@ -7,10 +7,11 @@
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 // import TodoTemplate from './components/todo/TodoTemplate';
+// import Join from './components/user/Join';
+import Login from './components/user/Login';
 
 // reactstrap(bootstrap)
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Join from './components/user/Join';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       */}
       <Header />
       {/* <TodoTemplate /> */}
-      <Join />
+      {/* <Join /> */}
+      <Login />
       <Footer />
     </>
   );

@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppRouter from './router/AppRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />   // 컴포넌트 : 의미가 있는 태그들을 한곳에 모아놓은 부품
+    // <App />   // 컴포넌트 : 의미가 있는 태그들을 한곳에 모아놓은 부품
+    
+    // 2023-01-27
+    <BrowserRouter>
+        <AppRouter />
+    </BrowserRouter>
+    
 );
 
 // If you want to start measuring performance in your app, pass a function

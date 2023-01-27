@@ -67,7 +67,9 @@ const TodoTemplate = () => {
             .then(res => {
                 if (res.status === 403) {
                     alert('로그인이 필요한 서비스입니다');
-                    // 리다이렉트 (로그인 페이지로)
+
+                    // 로그인페이지로 리다이렉트 - 2023-01-27
+                    window.location.href = '/login';
                     return;
                 } 
                 else if (res.status === 500) {
