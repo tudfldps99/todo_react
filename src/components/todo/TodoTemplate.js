@@ -9,6 +9,8 @@ import { Spinner } from 'reactstrap';
 
 import { BASE_URL, TODO } from '../../config/host-config';
 
+import { getToken } from '../util/login-util';
+
 // css 로딩
 import './css/TodoTemplate.css';
 
@@ -17,6 +19,7 @@ const TodoTemplate = () => {
     //const API_BASE_URL = 'http://localhost:8080/api/todos';
     // -> 2023-01-26) host-config.js 
     const API_BASE_URL = BASE_URL + TODO;
+    const ACCESS_TOKEN = getToken();
 
     // 할일 api 데이터 
     const [todos, setTodos] = useState([]);
@@ -24,11 +27,17 @@ const TodoTemplate = () => {
     // 로딩 중 상태
     const [loading, setLoading] = useState(true);
 
+    // headers
+    const headerInfo = {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + ACCESS_TOKEN
+    }
+
     // 할일 등록 서버 요청  (POST에 대한 응답처리)
     const addTodo = ( todo ) => {
         fetch(API_BASE_URL, {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
+            headers: headerInfo,
             body: JSON.stringify(todo)          // todo : <form> 입력 데이터 --> 자식(TodoInput.js)에게 있는 데이터 ==> callback 이용
         })
         .then(res => res.json())
@@ -40,7 +49,8 @@ const TodoTemplate = () => {
     // 할일 삭제 요청 처리 (DELETE에 대한 응답처리)
     const deleteTodo = ( id ) => {      // 삭제하고 싶은 id값을 자식(TodoItem.js)에게 받아와야 함
         fetch(`${API_BASE_URL}/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: headerInfo     // 삭제도 인증 필요
         })
         .then(res => res.json())
         .then(result => {
@@ -52,7 +62,7 @@ const TodoTemplate = () => {
     const updateTodo = ( todo ) => {
         fetch(`${API_BASE_URL}/${todo.id}`, {
             method: 'PUT' || 'PATCH',
-            headers: { 'content-type': 'application/json' },
+            headers: headerInfo,
             body: JSON.stringify(todo)
         })
         .then(res => res.json())
@@ -63,7 +73,10 @@ const TodoTemplate = () => {
 
     // 렌더링 되자마자 할 일 => todos api GET 목록 호출
     useEffect(() => {
-        fetch(API_BASE_URL)
+        fetch(API_BASE_URL, {
+            method: 'GET',
+            headers: headerInfo
+        })
             .then(res => {
                 if (res.status === 403) {
                     alert('로그인이 필요한 서비스입니다');
