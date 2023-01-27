@@ -6,6 +6,10 @@
 
     /* 교차 축 중앙정렬 */
     align-items: center;
+
+    height: 55px;
+
+    box-sizing: border-box;
 }
 
 .todo-item .check-circle {
@@ -43,6 +47,7 @@
     text-decoration: line-through;      /* 글자 취소선 */
 }
 
+.todo-item .modify,
 .todo-item .remove {
     font-size: 28px;
     color: #ccc;
@@ -53,13 +58,20 @@
     justify-content: center;
     align-items: center;
 
+    margin-left: 5px;
+
     display: none;      
 }
 
+.todo-item:hover .modify,
 .todo-item:hover .remove {      /* 처음엔 안보였다가 li태그에 마우스 올렸을 때 보여도록 (휴지통 자체에 none을 걸었기에 li태그에 마우스를 올려야 함) */
     display: block;
 }
 
 .todo-item .remove:hover {      /* 휴지통에 마우스 올리면 색상 변경 */
     color: #f51b4f;
+}
+
+.todo-item .modify:hover {
+    color: #cdf51b;
 }
