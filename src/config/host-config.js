@@ -8,8 +8,8 @@ let backendHost;        // 백엔드 호스트 이름
 
 if (hostname === 'localhost') {
     backendHost = 'http://localhost:8080';
-} else if (hostname === 'lalala.com') {     // (예시)
-    backendHost = 'http://rururu.com';
+} else if (hostname === 'practice-s3-psy-bucket001.s3-website.ap-northeast-2.amazonaws.com') {     // 2023-02-01) AWS - S3
+    backendHost = 'http://3.35.176.27';         // 2023-02-01) AWS - EC2
 }
 
 export const BASE_URL = backendHost;
