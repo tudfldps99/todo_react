@@ -33,3 +33,9 @@ $ npm install react-router-dom
 $ npm install
 ```
 입력 시 node_modules 설치됨
+
+7. React 배포 시 실행
+```
+$ npm run build
+$ npm run deploy
+```
